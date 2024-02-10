@@ -1,36 +1,39 @@
 const listaPokemon = document.querySelector("#listaPokemon");
 let URL = "https://pokeapi.co/api/v2/pokemon/";
 
-for (let i = 1; i <= 151; i++ ){
+for (let i = 1; i <= 151; i++) {
 
     fetch(URL + i)
         .then((response) => response.json())
         .then(data => mostrarPokemon(data))
 }
 
-function mostrarPokemon(poke){
+function mostrarPokemon(poke) {
 
-    
+
     const div = document.createElement("div");
     div.classList.add("pokemon");
-    let tipos = poke.types.map((type => `<li class="${type.type.name}" tipo">${type.type.name}"</li>`))
+
+    let tipos = poke.types.map((type => `<p class="${type.type.name}" tipo">${type.type.name}"</p>`))
     div.innerHTML = `
     
+    <div class="pokemon-carta">
+        <div class="pokemon-info-top">
+            <p>${poke.name}</p>
+        </div>
         <div class="pokemon-imagen">
             <img src="${poke.sprites.other["official-artwork"].front_default}" alt="${poke.name}">
         </div>
         <div class="pokemon-info">
-            <div class="nombre-codtenedor">
-                <p class="pokemon-id">${poke.id}</p>
-                <h2 class="pokemon-nombre">${poke.name}</h2>
-            </div>
-            <div class="pokemon-tipos">
-                types:${tipos}</p>
-            </div>
-            <div class="pokemon-stats">
-                <p class="stat">${poke.height}</p>
-                <p class="stat">${poke.weight}</p>
-            </div>
+        <div class = info>
+            <div class="nombre-contenedor">
+                <p>${poke.id}</p>
+                <p>${poke.height}</p>
+                <p>${poke.weight}</p>
+                <p> types:${tipos}</p>
+            </div>  
+       </div>   
+    </div>  
     `;
 
     listaPokemon.append(div);
