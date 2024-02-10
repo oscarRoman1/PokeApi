@@ -13,19 +13,19 @@ function mostrarPokemon(poke){
     
     const div = document.createElement("div");
     div.classList.add("pokemon");
-    let tipos = poke.types.map((type => `<p class="${type.type.name}" tipo">${type.type.name}"</p>`))
+    let tipos = poke.types.map((type => `<li class="${type.type.name}" tipo">${type.type.name}"</li>`))
     div.innerHTML = `
     
         <div class="pokemon-imagen">
             <img src="${poke.sprites.other["official-artwork"].front_default}" alt="${poke.name}">
         </div>
         <div class="pokemon-info">
-            <div class="nombre-contenedor">
+            <div class="nombre-codtenedor">
                 <p class="pokemon-id">${poke.id}</p>
                 <h2 class="pokemon-nombre">${poke.name}</h2>
             </div>
             <div class="pokemon-tipos">
-                tipos:${tipos}</p>
+                types:${tipos}</p>
             </div>
             <div class="pokemon-stats">
                 <p class="stat">${poke.height}</p>
